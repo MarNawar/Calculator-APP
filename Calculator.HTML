@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<HTML>
+  <head>
+    <style>
+      body{
+        background-color: black;
+      }
+      .pera-style{
+        color: white;
+        font-size: 30px;
+      }
+      .button-style{
+        background-color: rgb(49, 53, 56);
+        color: white;
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        border:none;
+        padding: 2px;
+      }
+      .operation-style{
+        background-color: rgb(234, 141, 11);
+        color: white;
+        height: 40px;
+        width: 40px;
+        border-radius: 20px;
+        border:none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p class="pera pera-style"></p>
+
+    <p>
+      <button class="button-style" onclick="
+        updateCalculation('1');
+      ">1</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('2');
+      ">2</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('3');
+      ">3</button>
+
+      <button class="operation-style" onclick="
+        updateCalculation(' + ');
+      ">+</button>
+
+    </p>
+    <p>
+      <button class="button-style" onclick="
+        updateCalculation('4');
+      ">4</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('5');
+      ">5</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('6');
+      ">6</button>
+
+      <button class="operation-style" onclick="
+        updateCalculation(' - ');
+      ">-</button>
+
+    </p>
+    <p>
+      <button class="button-style" onclick="
+        updateCalculation('7');
+      ">7</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('8');
+      ">8</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('9');
+      ">9</button>
+
+      <button class="operation-style" onclick="
+        updateCalculation(' * ');
+      ">*</button>
+    </p>
+
+    <p>
+      <button class="button-style" onclick="
+        updateCalculation('0');
+      ">0</button>
+
+      <button class="button-style" onclick="
+        updateCalculation('.');
+      ">.</button>
+
+      <button class="button-style" onclick="
+        calculation=String(eval(calculation));
+        updateCalculation('');
+      ">=</button>
+
+      <button class="operation-style" onclick="
+        updateCalculation(' / ');
+      ">/</button>
+    </p>
+
+    <p>
+      <button class="button-style" onclick="
+        calculation='';
+        localStorage.removeItem('cal');
+        document.querySelector(`.pera`).innerHTML=`${calculation}`;
+      ">Clear</button>
+    </p>
+    
+    <script>
+
+      let calculation=localStorage.getItem('cal')||('');
+      document.querySelector(`.pera`).innerHTML=`${calculation}`;
+
+
+      function updateCalculation(add){
+        calculation+=add;
+        console.log(calculation);
+        document.querySelector(`.pera`).innerHTML=`${calculation}`;
+        localStorage.setItem('cal',calculation);
+      }
+
+      // function convertTemperature(degree,unit){
+      //   if(unit=='C'){
+      //     console.log(`${(degree*9/5) + 32}F`);
+      //   }
+      //   else{
+      //     console.log(`${(degree-32)*5/9}C`);
+      //   }
+      // }
+      // convertTemperature(25,'C');
+      // convertTemperature(86,'F');
+
+    </script>
+  </body>
+</HTML>
